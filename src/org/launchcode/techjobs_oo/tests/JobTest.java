@@ -45,11 +45,12 @@ public class JobTest {
         assertFalse((testJob3.equals(testJob4)));
     }
 
-//    @Test
-//    public void testBlankLinesSurroundToString() {
-//        String expected = "\n" + "ID: " + testJob1.getId() + "\n";
-//        assertEquals(expected, testJob1.);
-//    }
+    @Test
+    public void testBlankLinesSurroundToString() {
+        String whole = testJob3.toString();
+        String noBlankLines = testJob3.toString().trim();
+        assertFalse((whole.equals(noBlankLines)));
+    }
 
     @Test
     public void testToStringFormat() {
@@ -66,17 +67,16 @@ public class JobTest {
 
     @Test
     public void testForNullFieldsExceptions() {
-        Job testJob5 = new Job("", new Employer(""), new Location(""), new PositionType(""), new CoreCompetency("Persistence"));
+        Job testJob5 = new Job(null, new Employer("ACME"), new Location(""), new PositionType(""), new CoreCompetency("Persistence"));
         String nullMessage = "Data not available";
         String expected = "\n" +
                 "ID: " + testJob5.getId() +
                 "\nName: " + nullMessage +
-                "\nEmployer: " + nullMessage +
+                "\nEmployer: " + testJob5.getEmployer().getValue() +
                 "\nLocation: " + nullMessage +
                 "\nPosition Type: " + nullMessage +
                 "\nCore Competency: " + testJob5.getCoreCompetency().getValue() +
                 "\n";
         assertEquals(expected, testJob5.toString());
     }
-
 }

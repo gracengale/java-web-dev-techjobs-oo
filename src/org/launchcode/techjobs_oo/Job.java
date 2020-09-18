@@ -38,49 +38,34 @@ public class Job {
 
     @Override
     public String toString() {
-        String nameString = "";
-        String eString = "";
-        String lString = "";
-        String pString = "";
-        String cString = "";
 
-        if (name != null && name != "") {
-            nameString = "Name: " + name;
-        } else if (name == null || name == "") {
-            nameString = "Name: Data not available";
+        if (name == "" || name == null) {
+            name = "Data not available";
         }
 
-        if (employer != null && employer.getValue() != "") {
-            eString = "Employer: " + employer;
-        } else if (employer == null || employer.getValue() == "") {
-            eString = "Employer: Data not available";
+        if (employer.getValue() == "" || employer.getValue() == null) {
+            employer.setValue("Data not available");
         }
 
-        if (location != null && location.getValue() != "") {
-            lString = "Location: " + location;
-        } else if (location == null || location.getValue() == "") {
-            lString = "Location: Data not available";
+        if (location.getValue() == "" || location.getValue() == null) {
+            location.setValue("Data not available");
         }
 
-        if (positionType != null && positionType.getValue() != "") {
-            pString = "Position Type: " + positionType;
-        } else if (positionType == null || positionType.getValue() == "") {
-            pString = "Position Type: Data not available";
+        if (positionType.getValue() == "" || positionType.getValue() == null) {
+            positionType.setValue("Data not available");
         }
 
-        if (coreCompetency != null && coreCompetency.getValue() != "") {
-            cString = "Core Competency: " + coreCompetency;
-        } else if (coreCompetency == null || coreCompetency.getValue() == "") {
-            cString = "Core Competency: Data not available";
+        if (coreCompetency.getValue() == "" || coreCompetency.getValue() == null) {
+            coreCompetency.setValue("Data not available");
         }
 
         return "\n" +
                 "ID: " + id +
-                "\n" + nameString +
-                "\n" + eString +
-                "\n" + lString +
-                "\n" + pString +
-                "\n" + cString +
+                "\nName: " + name +
+                "\nEmployer: " + employer +
+                "\nLocation: " + location +
+                "\nPosition Type: " + positionType +
+                "\nCore Competency: " + coreCompetency +
                 "\n";
     }
 
