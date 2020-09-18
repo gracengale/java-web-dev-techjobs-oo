@@ -1,5 +1,6 @@
 package org.launchcode.techjobs_oo;
 
+import java.util.ArrayList;
 import java.util.Objects;
 
 public class Job {
@@ -12,6 +13,7 @@ public class Job {
     private Location location;
     private PositionType positionType;
     private CoreCompetency coreCompetency;
+    private String noData = "Data not available";
 
     // TODO: Add two constructors - one to initialize a unique ID and a second to initialize the
     //  other five fields. The second constructor should also call the first in order to initialize
@@ -33,6 +35,56 @@ public class Job {
 
     // TODO: Add custom equals and hashCode methods. Consider two Job objects "equal" when their id fields
     //  match.
+
+    @Override
+    public String toString() {
+        String nameString = "";
+        String eString = "";
+        String lString = "";
+        String pString = "";
+        String cString = "";
+
+        if (name != null && name != "") {
+            nameString = "Name: " + name;
+        } else if (name == null || name == "") {
+            nameString = "Name: Data not available";
+        }
+
+        if (employer != null && employer.getValue() != "") {
+            eString = "Employer: " + employer;
+        } else if (employer == null || employer.getValue() == "") {
+            eString = "Employer: Data not available";
+        }
+
+        if (location != null && location.getValue() != "") {
+            lString = "Location: " + location;
+        } else if (location == null || location.getValue() == "") {
+            lString = "Location: Data not available";
+        }
+
+        if (positionType != null && positionType.getValue() != "") {
+            pString = "Position Type: " + positionType;
+        } else if (positionType == null || positionType.getValue() == "") {
+            pString = "Position Type: Data not available";
+        }
+
+        if (coreCompetency != null && coreCompetency.getValue() != "") {
+            cString = "Core Competency: " + coreCompetency;
+        } else if (coreCompetency == null || coreCompetency.getValue() == "") {
+            cString = "Core Competency: Data not available";
+        }
+
+        return "\n" +
+                "ID: " + id +
+                "\n" + nameString +
+                "\n" + eString +
+                "\n" + lString +
+                "\n" + pString +
+                "\n" + cString +
+                "\n";
+    }
+
+
 
     @Override
     public boolean equals(Object o) {
@@ -65,7 +117,7 @@ public class Job {
     }
 
     public void setEmployer(Employer employer) {
-        this.employer = employer;
+            this.employer = employer;
     }
 
     public Location getLocation() {
